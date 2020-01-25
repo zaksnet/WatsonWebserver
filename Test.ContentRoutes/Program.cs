@@ -26,10 +26,40 @@ namespace Test
             Console.ReadLine();
         }
 
+        static bool AccessControlDenied(string ip, int port, string method, string url)
+        {
+            Console.WriteLine("AccessControlDenied [" + ip + ":" + port + "] " + method + " " + url);
+            return true;
+        }
+
+        static bool ConnectionReceived(string ip, int port)
+        {
+            Console.WriteLine("ConnectionReceived [" + ip + ":" + port + "]");
+            return true;
+        }
+
+        static bool ExceptionEncountered(string ip, int port, Exception e)
+        {
+            Console.WriteLine("ExceptionEncountered [" + ip + ":" + port + "]: " + Environment.NewLine + e.ToString());
+            return true;
+        }
+
+        static bool RequestReceived(string ip, int port, string method, string url)
+        {
+            Console.WriteLine("RequestReceived [" + ip + ":" + port + "] " + method + " " + url);
+            return true;
+        }
+
+        static bool ResponseSent(string ip, int port, string method, string url, int status, double totalTimeMs)
+        {
+            Console.WriteLine("ResponseSent [" + ip + ":" + port + "] " + method + " " + url + " status " + status + " " + totalTimeMs + "ms");
+            return true;
+        }
+
         static async Task DefaultRoute(HttpContext ctx)
         {
-            ctx.Response.StatusCode = 404;
-            await ctx.Response.Send();
+            ctx.Response.StatusCode = 200;
+            await ctx.Response.Send("Default route");
             return; 
         }
 

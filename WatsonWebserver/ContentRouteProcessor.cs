@@ -61,19 +61,19 @@ namespace WatsonWebserver
                 && ctx.Request.Method != HttpMethod.HEAD)
             {
                 Set500Response(ctx);
-                await ctx.Response.Send();
+                await ctx.Response.Send().ConfigureAwait(true);
                 return;
             }
              
             string filePath = ctx.Request.RawUrlWithoutQuery;
             if (!String.IsNullOrEmpty(filePath))
             {
-                while (filePath.StartsWith("/")) filePath = filePath.Substring(1); 
+                while (filePath.StartsWith("/", StringComparison.OrdinalIgnoreCase)) filePath = filePath.Substring(1); 
             }
 
             string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
             baseDirectory = baseDirectory.Replace("\\", "/");
-            if (!baseDirectory.EndsWith("/")) baseDirectory += "/";
+            if (!baseDirectory.EndsWith("/", StringComparison.OrdinalIgnoreCase)) baseDirectory += "/";
 
             filePath = baseDirectory + filePath;
             filePath = filePath.Replace("+", " ").Replace("%20", " ");
@@ -83,7 +83,7 @@ namespace WatsonWebserver
             if (!File.Exists(filePath))
             {
                 Set404Response(ctx);
-                await ctx.Response.Send();
+                await ctx.Response.Send(filePath).ConfigureAwait(true);
                 return;
             }
              
@@ -110,7 +110,7 @@ namespace WatsonWebserver
             else
             {
                 Set500Response(ctx);
-                await ctx.Response.Send();
+                await ctx.Response.Send().ConfigureAwait(true);
                 return;
             }  
         }

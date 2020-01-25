@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net462</TargetFrameworks>
+    <TargetFrameworks>net462</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Version>3.0.7</Version>
     <Description>Simple async C# web server for handling REST requests with SSL support, targeted to both .NET Core 2.0 and .NET Framework 4.6.2.</Description>
@@ -26,6 +26,10 @@
 
   <ItemGroup>
     <PackageReference Include="IpMatcher" Version="1.0.1" />
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.6">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
     <PackageReference Include="RegexMatcher" Version="1.0.2" />
   </ItemGroup>

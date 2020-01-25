@@ -248,3 +248,14 @@ __pycache__/
 # Cake - Uncomment if you are using it
 # tools/
 
+Test.ContentRoutes/bin/Release/netstandard2.0/IpMatcher.dll
+Test.ContentRoutes/bin/Release/netstandard2.0/Newtonsoft.Json.dll
+Test.ContentRoutes/bin/Release/netstandard2.0/RegexMatcher.dll
+Test.ContentRoutes/bin/Debug/netstandard2.0/test/test.exe
+Test.ContentRoutes/bin/Debug/netstandard2.0/RegexMatcher.dll
+Test.ContentRoutes/bin/Debug/netstandard2.0/Newtonsoft.Json.dll
+Test.ContentRoutes/bin/Debug/netstandard2.0/IpMatcher.dll
+
+*.exe
+
+*.dll
